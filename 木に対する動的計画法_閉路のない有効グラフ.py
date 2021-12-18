@@ -1,11 +1,12 @@
 '''
 木に対する動的計画法_閉路のない有効グラフ(有向非巡回グラフ)
 閉路を含まない有効パスの最長の長さを調べる。
-トポロジカルソート
+トポロジカルソートが重要
 閉路のないグラフにおいて、辺に沿って進むほど値が大きくなるように、N個の頂点0,1,・・・,N-1の番号を割り当てることを指す。
 正確には、すべての辺についてその始点の番号より終点の番号のほうが大きいという条件を満たすとき、
 そのような番号の割り当て方をグラフのトポロジカルソートと呼ぶ。
 閉路のない有効グラフには、必ずトポロジカルソートが存在する。
+閉路があるグラフではトポロジカルソートが存在せず、今回の動的計画法では解けない
 AtCoder Educational DP Contest G 問題
 https://atcoder.jp/contests/dp/tasks/dp_g
 '''
@@ -26,7 +27,7 @@ indeg = [0]*N
 for i in range(M):
     x,y = map(int,input().split())
     edges[x-1].append(y-1)
-    indeg[y-1]
+    indeg[y-1] += 1
 
 # length[i]:頂点iから始まるパスの最大長
 length = [0]*N
@@ -42,7 +43,7 @@ def rec(i):
     length[i] = 0
     for j in edges[i]:
         length[i] = max(length[i], rec(j) + 1)
-    # 計算済みフラウを立てて値を返す
+    # 計算済みフラグを立てて値を返す
     done[i] = True
     return length[i]
 
