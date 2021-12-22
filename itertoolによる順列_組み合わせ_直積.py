@@ -44,4 +44,27 @@ len(list(itertools.permutations(seq, 3)))   # 60
 
 '''
 組み合わせ
+(a,b,c,d,e)から5つ選ぶ組み合わせは5C5=1通り
+'''
+list(itertools.combinations(seq,5))
+'''
+出力結果
+[('a','b','c','d','e')]
+'''
+'''
+(a,b,c,d,e)から3つ選ぶ組み合わせは5C3=10通り
+'''
+list(itertools.combinations(seq,3))
+'''
+出力結果
+[('a', 'b', 'c'),
+ ('a', 'b', 'd'),
+ ('a', 'b', 'e'),
+ ('a', 'c', 'd'),
+ ('a', 'c', 'e'),
+ ('a', 'd', 'e'),
+ ('b', 'c', 'd'),
+ ('b', 'c', 'e'),
+ ('b', 'd', 'e'),
+ ('c', 'd', 'e')]
 '''
